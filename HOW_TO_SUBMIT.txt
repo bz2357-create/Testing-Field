@@ -1,0 +1,18 @@
+ICA 16: USING GIT WITH RPROJECTS — TESTING-FIELD
+
+1. In RStudio's Terminal (not the R Console), change to a parent directory where you want to store your project.
+2. Run: git clone https://github.com/bz2357-create/Testing-Field.git
+3. Run: cd Testing-Field
+4. Open ICA16_RStudio_Git.Rproj in RStudio.
+5. Open random_walk.R, edit the title or seed yourself, and click Source.
+6. In the Terminal run:
+   git status
+   git add random_walk.R
+   git commit -m "Personalize ICA 16 random walk"
+   git push origin main
+7. Check https://github.com/bz2357-create/Testing-Field to confirm your newly pushed commit.
+8. Take a screenshot (Mac: Command + Shift + 4) showing the file list and latest commit, and upload that screenshot for the ICA 16 assignment.
+
+If git asks you to set an author, use git config --global user.name and git config --global user.email with your own information. If push fails on authentication, sign into GitHub using your Git credential helper.
+
+Note: Files initially uploaded through the GitHub connector are NOT a substitute for your own local stage/commit/push exercise.
