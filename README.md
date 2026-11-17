@@ -10,3 +10,7 @@ Open `Project2/Project2.Rproj` in RStudio. Git metadata and the GitHub remote ar
 The earlier ICA16 files (`ICA16_RStudio_Git.Rproj`, `random_walk.R`, and `HOW_TO_SUBMIT.txt`) are retained in the root folder.
 
 Repository: https://github.com/bz2357-create/Testing-Field
+
+## Submission download
+
+[Download the complete Project 2 submission ZIP](submissions/Zhang_Bowen_Project2.zip). The archive contains the verified project and Git history through commit a74e390, before this archive was added to the repository. This avoids including the ZIP inside itself. Open Testing-Field/Project2/Project2.Rproj after extracting.
