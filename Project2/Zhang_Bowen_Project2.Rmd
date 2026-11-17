@@ -1,0 +1,79 @@
+---
+title: "Air Quality Patterns at RDU Airport"
+author: "Bowen Zhang"
+date: "November 17, 2026"
+output:
+  word_document:
+    reference_docx: reference.docx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      out.width = "100%", dpi = 300)
+source("R/analysis.R")
+```
+
+# Purpose and data preparation
+
+This report explores daily CO, PM2.5, and ozone concentrations from the EPA air pollution monitor at RDU airport for 2018 through April 2020, as preparation for a study of sickle cell disease in Durham County. CO is higher in colder months, while ozone is higher in spring and summer; these exposure data alone cannot establish associations with health care use.
+
+The cleaning function removes exact duplicate records, converts dates, and sets each negative pollutant measurement to zero before averaging non-missing measurements within each day. Removing duplicates first prevents extra weighting; correcting negatives before averaging prevents a negative reading from reducing the daily mean. Ozone remains in ppm by default, with an optional conversion to ppb by multiplying by 1,000.
+
+The processed data contain 361 dates in 2018, 365 in 2019, and 121 in 2020. Four dates absent from the 2018 file are not imputed, and days with no measurement for a pollutant retain a missing value; missing measurements are excluded separately for each pollutant. The raw files contain 2, 7, and 3 exact duplicate rows, respectively, and one negative PM2.5 reading in 2018.
+
+# Annual daily concentration ranges
+
+```{r annual-tables, results='asis'}
+for (yr in years) {
+  tab <- annual_ranges |>
+    filter(year == yr) |>
+    mutate(pollutant = factor(pollutant, levels = c("co", "pm25", "o3"),
+      labels = c("CO (ppm)", "PM2.5 (ug/m3 LC)", "Ozone (ppm)"))) |>
+    arrange(pollutant) |>
+    transmute(Pollutant = pollutant, Minimum = sprintf("%.3f", minimum),
+              Maximum = sprintf("%.3f", maximum))
+  period <- if (yr == 2020) "January-April" else "January-December"
+  cat("\n\n")
+  print(knitr::kable(tab, caption = paste0("Table ", yr - 2017, ". Daily concentration ranges in ", yr, " (", period, ")."),
+                     align = c("l", "r", "r")))
+  cat("\n\n")
+}
+```
+
+Ranges are calculated from processed daily averages, rather than individual raw readings. PM2.5 units are micrograms per cubic meter at local conditions (ug/m3 LC).
+
+```{r pagebreak1, results='asis'}
+cat('\n```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n')
+```
+
+# CO and ozone by calendar month
+
+```{r plot1, fig.width=6.8, fig.height=4.5, fig.cap="Figure 1. Monthly means and 95% confidence intervals for daily CO and ozone concentrations."}
+co_o3_plot
+```
+
+Separate panels with independent y-axis scales preserve the original ppm units while making both pollutants' seasonal patterns readable. Vertical distances should be compared within each panel because the scales differ.
+
+Each estimate pools all non-missing daily concentrations for that calendar month across available years. Error bars use the specified formula, mean ± 1.96 × SD / sqrt(n), where n is the number of days with a measurement for that pollutant. January-April include three years; May-December include two, with sample sizes also reduced by missing measurements (CO: 52-93 days; ozone: 54-92 days).
+
+These are descriptive normal-approximation intervals under the assignment formula; they do not adjust for serial correlation among daily measurements. They describe uncertainty around a monthly mean, rather than the range of daily concentrations.
+
+```{r pagebreak2, results='asis'}
+cat('\n```{=openxml}\n<w:p><w:r><w:br w:type="page"/></w:r></w:p>\n```\n')
+```
+
+# PM2.5 by month and year
+
+```{r plot2, fig.width=6.8, fig.height=3.4, fig.cap="Figure 2. Monthly means of available daily PM2.5 concentrations, separated by year."}
+pm_plot
+```
+
+Lines connect monthly mean points to make seasonal changes and differences among years easy to follow, while the 2020 line stops in April to avoid implying observations for later months.
+
+# Interpretation
+
+Pooled CO is highest in December (0.513 ppm) and lowest in May and July (about 0.255 ppm), whereas ozone peaks in June (0.050 ppm) and is lowest in December (0.027 ppm). PM2.5 monthly patterns vary across years: 2020 starts below the other years in January and February, yet has the largest observed daily maximum (31.200 ug/m3 LC), while the 2018 and 2019 daily maxima are 20.400 and 21.300 ug/m3 LC. January-April include three years and later months only two, with additional missing measurements, so the 2020 range is a partial-year summary and seasonal comparisons reflect unequal coverage.
+
+# AI use statement
+
+I used OpenAI Codex to help write and document the R cleaning function, construct the tables and plots, and draft this report. Codex ran hand-calculated cleaning checks, independently recalculated the source-data summaries, and rendered the Word document for visual inspection.

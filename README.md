@@ -1,19 +1,12 @@
-# ICA 16 — RStudio and Git
+# RDU Airport Air Quality Exploration
 
-This is a small RStudio project for practicing Git and GitHub in BIOSTAT 721.
+BIOSTAT 721 Project 2 processes EPA monitor measurements from RDU airport for 2018, 2019, and January-April 2020. It produces daily air quality data, yearly concentration ranges, monthly plots, and a Word report to prepare for a sickle cell disease exposure study.
 
-## What the script does
+Author: Bowen Zhang
+Date: November 17, 2026
 
-Run `random_walk.R` in RStudio to simulate 100 random steps and plot their cumulative position. It uses base R only.
+Open `Project2/Project2.Rproj` in RStudio. Git metadata and the GitHub remote are in the parent Testing-Field folder. See [Project 2 README](Project2/README.md) for the full file structure, methods, and reproduction instructions.
 
-## How to run
-
-1. Clone this repository: `git clone https://github.com/bz2357-create/Testing-Field.git`
-2. Open `ICA16_RStudio_Git.Rproj` in RStudio.
-3. Open `random_walk.R` and click **Source** (or run `source("random_walk.R")`).
-
-## ICA 16 assignment
-
-After making your own change to `random_walk.R`, stage it (`git add`), commit it **locally** (`git commit`), push it to GitHub (`git push`), and take a screenshot of this repository page showing your latest pushed commit.
+The earlier ICA16 files (`ICA16_RStudio_Git.Rproj`, `random_walk.R`, and `HOW_TO_SUBMIT.txt`) are retained in the root folder.
 
 Repository: https://github.com/bz2357-create/Testing-Field

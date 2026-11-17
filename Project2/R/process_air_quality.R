@@ -17,12 +17,17 @@ process_air_quality <- function(file_path, ozone_units = "ppm") {
   # Remove complete duplicate records before they can receive extra weight.
   raw <- dplyr::distinct(raw)
   dates <- as.Date(raw$Date, format = "%m/%d/%Y")
-  if (anyNA(dates) || any(format(dates, "%m/%d/%Y") != raw$Date)) {
+  if (anyNA(dates) || any(gsub("(^|/)0", "\\1", format(dates, "%m/%d/%Y")) !=
+                          gsub("(^|/)0", "\\1", raw$Date))) {
     stop("Dates must be valid dates in MM/DD/YYYY format.")
   }
   if (length(unique(format(dates, "%Y"))) != 1L) stop("Supply one year at a time.")
-  if (!all(raw$units_CO %in% "ppm") ||
-      !all(raw$units_PM %in% "ug/m3 LC") || !all(raw$units_O3 %in% "ppm")) {
+  if (any(!is.na(raw$units_CO) & raw$units_CO != "ppm") ||
+      any(!is.na(raw$units_PM) & raw$units_PM != "ug/m3 LC") ||
+      any(!is.na(raw$units_O3) & raw$units_O3 != "ppm") ||
+      any(!is.na(raw[[required[2]]]) & is.na(raw$units_CO)) ||
+      any(!is.na(raw[[required[4]]]) & is.na(raw$units_PM)) ||
+      any(!is.na(raw[[required[6]]]) & is.na(raw$units_O3))) {
     stop("Expected raw units: CO ppm, PM2.5 ug/m3 LC, and ozone ppm.")
   }
   clean <- dplyr::tibble(date = dates, co = raw[[required[2]]],
