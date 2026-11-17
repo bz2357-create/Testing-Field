@@ -13,4 +13,4 @@ Repository: https://github.com/bz2357-create/Testing-Field
 
 ## Submission download
 
-[Download the complete Project 2 submission ZIP](submissions/Zhang_Bowen_Project2.zip). The archive contains the verified project and Git history through commit a74e390, before this archive was added to the repository. This avoids including the ZIP inside itself. Open Testing-Field/Project2/Project2.Rproj after extracting.
+[Download the complete Project 2 submission ZIP](submissions/Zhang_Bowen_Project2.zip). The archive contains a standalone Project2 R project with its code, data, report, and reproduction instructions. Open Zhang_Bowen_Project2/Project2.Rproj after extracting. Clone the repository to retain the GitHub remote and full development history.

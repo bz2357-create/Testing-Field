@@ -12,7 +12,7 @@ EPA air pollution monitor at RDU airport, supplied with the assignment in data-7
 
 ## File structure
 
-- Project2.Rproj: RStudio project; Git metadata and the remote are in the parent repository.
+- Project2.Rproj: RStudio project; Git metadata and the remote are in the parent repository when cloned from GitHub.
 - data/: original AQ_2018.csv, AQ_2019.csv, and AQ_2020.csv.
 - R/process_air_quality.R: documented single-year cleaning function.
 - R/analysis.R: combines years, calculates summaries, and builds both plots.
@@ -29,8 +29,8 @@ EPA air pollution monitor at RDU airport, supplied with the assignment in data-7
 
 Use R 4.1 or later (tested on R 4.3.2), RStudio or another Pandoc installation, and dplyr, tidyr, ggplot2, knitr, and rmarkdown.
 
-1. Clone this repository, or extract the complete submission ZIP while preserving its .git directory.
-2. Open Project2/Project2.Rproj in RStudio. The working directory should be Project2.
+1. Clone this repository for the GitHub connection and development history, or extract the submission ZIP for a standalone copy of the R project.
+2. Open Project2/Project2.Rproj in the cloned repository, or Zhang_Bowen_Project2/Project2.Rproj in the extracted ZIP. The working directory should be the folder containing that Rproj file.
 3. Install missing packages once:
 
 ```r
@@ -61,6 +61,6 @@ Yearly tables summarize processed daily values to three decimal places. Plot 1 p
 
 ## Submission and AI use
 
-The complete repository ZIP includes Project2, the earlier ICA16 files, and Git metadata to preserve the GitHub connection and development history. After extraction, open Project2/Project2.Rproj. Review the report and code before submitting the ZIP to Canvas. The assignment deadline is November 19, 2026 at 5 pm EST. Canvas submission is a separate step.
+The submission ZIP contains the standalone R project, including all code, raw data, tables, figures, and the Word report. After extraction, open Zhang_Bowen_Project2/Project2.Rproj. The GitHub repository separately preserves the connection and full development history. Review the report and code before submitting the ZIP to Canvas. The assignment deadline is November 19, 2026 at 5 pm EST. Canvas submission is a separate step.
 
-OpenAI Codex assisted with code, report drafting, numerical checks, and layout review. The report includes the required AI use statement and distinguishes automated checks from personal review.
+I brainstormed with OpenAI Codex and developed the project structure with its help. Codex also assisted with the R code, tables, plots, and report drafting, and all work was completed under human supervision. Checks included hand-calculated examples, an independent numerical audit, and visual review of the Word report.

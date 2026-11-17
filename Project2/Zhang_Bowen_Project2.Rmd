@@ -76,4 +76,4 @@ Pooled CO is highest in December (0.513 ppm) and lowest in May and July (about 0
 
 # AI use statement
 
-I used OpenAI Codex to help write and document the R cleaning function, construct the tables and plots, and draft this report. Codex ran hand-calculated cleaning checks, independently recalculated the source-data summaries, and rendered the Word document for visual inspection.
+I brainstormed with OpenAI Codex and developed the project structure with its help. Codex also assisted with the R code, tables, plots, and report drafting, and all work was completed under human supervision. Checks included hand-calculated examples, an independent numerical audit, and visual review of the Word report.
