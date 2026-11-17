@@ -13,6 +13,8 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
 source("R/analysis.R")
 ```
 
+GitHub repository: [bz2357-create/Testing-Field](https://github.com/bz2357-create/Testing-Field/tree/main/Project2)
+
 # Purpose and data preparation
 
 This report explores daily CO, PM2.5, and ozone concentrations from the EPA air pollution monitor at RDU airport for 2018 through April 2020, as preparation for a study of sickle cell disease in Durham County. CO is higher in colder months, while ozone is higher in spring and summer; these exposure data alone cannot establish associations with health care use.
